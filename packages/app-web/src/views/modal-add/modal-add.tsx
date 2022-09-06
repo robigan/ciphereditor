@@ -18,7 +18,7 @@ import { openUrlAction, popModalAction } from '../../slices/ui'
 import { useState } from 'react'
 import LargeDropDownButtonView from '../large-dropdown-button/large-dropdown-button'
 
-export default function AddModalView (props: AddModalPayload): JSX.Element {
+export default function AddModalView(props: AddModalPayload): JSX.Element {
   const dispatch = useAppDispatch()
   const [t] = useTranslation()
   const activeProgram = useBlueprintSelector(state => getActiveProgram(state))
@@ -68,7 +68,9 @@ export default function AddModalView (props: AddModalPayload): JSX.Element {
       />
       <ul className='modal-add-content-area'>
         <LargeDropDownButtonView icon='chevronDown'>
-          Operations
+          {({open}) => (
+            <p>Operations</p>
+          )}
         </LargeDropDownButtonView>
         <div style={{ paddingLeft: '1.125rem' }}>
           {matchingContributions.map(contribution => (
@@ -92,9 +94,9 @@ export default function AddModalView (props: AddModalPayload): JSX.Element {
           ))}
         </div>
 
-        <LargeDropDownButtonView icon='chevronDown'>
+        {/* <LargeDropDownButtonView icon='chevronDown'>
           Programs
-        </LargeDropDownButtonView>
+        </LargeDropDownButtonView> */}
         <div style={{ paddingLeft: '1.125rem' }}>
           <li key='empty-program'>
             <ButtonView
@@ -112,9 +114,9 @@ export default function AddModalView (props: AddModalPayload): JSX.Element {
           </li>
         </div>
 
-        <LargeDropDownButtonView icon='chevronDown'>
+        {/* <LargeDropDownButtonView icon='chevronDown'>
           Controls
-        </LargeDropDownButtonView>
+        </LargeDropDownButtonView> */}
         <div style={{ paddingLeft: '1.125rem' }}>
           <li key='empty-control'>
             <ButtonView
